@@ -61,4 +61,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, CreateUser.class);
         startActivity(i);
     }
+
+    public void onDeleteUser(View view) {
+        Intent i = new Intent(this, DeleteUser.class);
+        startActivity(i);
+    }
 }

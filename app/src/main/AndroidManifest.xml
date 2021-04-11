@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateUser"></activity>
+        <activity android:name=".DeleteUser"></activity>
+        <activity android:name=".CreateUser" />
         <activity
             android:name=".Lobby"
             android:label="@string/title_activity_lobby" />
