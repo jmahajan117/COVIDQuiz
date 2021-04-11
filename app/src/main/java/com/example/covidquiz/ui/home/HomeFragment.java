@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +17,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.covidquiz.R;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class HomeFragment extends Fragment {
 
@@ -38,7 +44,23 @@ public class HomeFragment extends Fragment {
 
         deleteTeam.setOnClickListener(v -> {
             //TODO: DELETE THE TEAM
-            String message = "Good Luck";
+            String teamNameDB = ((EditText) root.findViewById(R.id.editTextTextPersonName)).getText().toString();
+
+            try {
+                //COPY BELOW
+                Connection server = DriverManager.getConnection(
+                        "jdbc:mysql://34.122.65.95:3306/411Data",
+                        "root",
+                        "DataBased2");
+                Statement statement = server.createStatement();
+                //WATCH SPACES
+                int r = statement.executeUpdate("DELETE " +
+                        "FROM Teams " + "WHERE TeamName = " +
+                        "\""+ teamNameDB + "\"");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         joinTeam.setOnClickListener(v -> {
