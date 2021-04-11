@@ -20,6 +20,7 @@ import com.example.covidquiz.R;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class HomeFragment extends Fragment {
@@ -66,12 +67,69 @@ public class HomeFragment extends Fragment {
 
         joinTeam.setOnClickListener(v -> {
             //TODO: JOIN THE TEAM
-            String message = "Good Luck";
+            String teamNameDB = ((EditText) root.findViewById(R.id.editTextTextPersonName)).getText().toString();
+
+            try {
+                Connection server = DriverManager.getConnection(
+                        "jdbc:mysql://34.122.65.95:3306/411Data",
+                        "root",
+                        "DataBased2");
+                Statement statement = server.createStatement();
+
+                // Check if the entered team exists- if it does, then display wins and then allow a joining
+                ResultSet r = statement.executeQuery("SELECT t.TeamName " + "FROM Teams t " +
+                        "WHERE t.TeamName = \"" + teamNameDB + "\"");
+
+                boolean foundTeam = false;
+                while (r.next()) {
+                    if (r.getString("TeamName").equals(teamNameDB)) {
+                        foundTeam = true;
+                        break;
+                    }
+                }
+
+                if (foundTeam) {
+                    int r2 = statement.executeUpdate("UPDATE Users " + "SET TName = " +
+                            "\"" + teamNameDB + "\" " + "WHERE Username = \"" + user + "\"");
+                }
+
+                // Check if this team has ever been in a room, else set the text to a hard 0
+                ResultSet r3 = statement.executeQuery("SELECT temp.teamname AS tname, SUM(temp.teamwins) AS totalwins " +
+                        "FROM (SELECT r.TeamA as teamname, r.WinsA as teamwins FROM Rooms r " +
+                        "WHERE r.TeamA = \"" + teamNameDB + "\" UNION SELECT r.TeamB as teamname, " +
+                        "r.WinsB as teamwins FROM Rooms r WHERE r.TeamB = \"" + teamNameDB + "\") as " +
+                        "temp GROUP BY temp.teamname");
+                int teamWins = 0;
+                while (r3.next()) {
+                    if (r3.getString("tname").equals(teamNameDB)) {
+                        teamWins = r3.getInt("totalwins");
+                    }
+                }
+
+                // TODO: Place teamWins into the textViewWins field!
+                textWins.setText("Team Wins: " + teamWins);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         createTeam.setOnClickListener(v -> {
             //TODO: CREATE THE TEAM
-            String message = "Good Luck";
+            String teamNameDB = ((EditText) root.findViewById(R.id.editTextTextPersonName)).getText().toString();
+
+            try {
+                Connection server = DriverManager.getConnection(
+                        "jdbc:mysql://34.122.65.95:3306/411Data",
+                        "root",
+                        "DataBased2");
+                Statement statement = server.createStatement();
+
+                int r = statement.executeUpdate("INSERT INTO Teams(TeamName, Owner) VALUES(" +
+                        "\"" + teamNameDB + "\", \"" + user + "\")");
+            } catch (Exception e) {
+                e.printStackTrace();;
+            }
         });
 
         return root;
