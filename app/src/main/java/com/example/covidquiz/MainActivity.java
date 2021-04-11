@@ -2,6 +2,7 @@ package com.example.covidquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
             //Make sure you put this loop
             while (r.next()) {
                 if (r.getString("Username").equals(userName) && r.getString("Password").equals(password)) {
-                    Log.d("Yeet", "Works");
+                    Intent nextScreen = new Intent(this, Lobby.class);
+                    startActivity(nextScreen);
                     //DO WHATEVER HERE
                 }
             }
@@ -53,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void onCreateUser(View view) {
+        Intent i = new Intent(this, CreateUser.class);
+        startActivity(i);
     }
 }
