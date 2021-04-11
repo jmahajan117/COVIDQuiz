@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 if (r.getString("Username").equals(userName) && r.getString("Password").equals(password)) {
                     Intent nextScreen = new Intent(this, Lobby.class);
                     nextScreen.putExtra("Team Name", r.getString("TName"));
+                    nextScreen.putExtra("User", userName);
                     startActivity(nextScreen);
                     //DO WHATEVER HERE
                 }

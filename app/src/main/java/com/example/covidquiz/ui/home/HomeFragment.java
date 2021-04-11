@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         createTeam = (Button) root.findViewById(R.id.buttonCreateTeam);
         textWins = (TextView) root.findViewById(R.id.textViewWins);
 
+        String user = getActivity().getIntent().getStringExtra("User");
         String teamName = getActivity().getIntent().getStringExtra("Team Name");
 
         //TODO: Get the wins of the team and update the textWins elem accordingly
