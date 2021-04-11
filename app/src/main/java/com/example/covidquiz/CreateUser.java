@@ -14,7 +14,7 @@ public class CreateUser extends AppCompatActivity {
         setTitle("Create New User");
     }
 
-    public void onCreate(View view) {
+    public void onCreateUser(View view) {
         // TODO: Get the typed info and insert into SQL, assume Team is NULL for now
     }
 }
