@@ -1,9 +1,11 @@
 package com.example.covidquiz.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,20 +18,39 @@ import com.example.covidquiz.R;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private Button deleteTeam;
+    private Button joinTeam;
+    private Button createTeam;
+    private TextView textWins;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
+
+        deleteTeam = (Button) root.findViewById(R.id.buttonDeleteTeam);
+        joinTeam = (Button) root.findViewById(R.id.buttonJoin);
+        createTeam = (Button) root.findViewById(R.id.buttonCreateTeam);
+        textWins = (TextView) root.findViewById(R.id.textViewWins);
+
+        String teamName = getActivity().getIntent().getStringExtra("Team Name");
+
+        //TODO: Get the wins of the team and update the textWins elem accordingly
+
+        deleteTeam.setOnClickListener(v -> {
+            //TODO: DELETE THE TEAM
+            String message = "Good Luck";
         });
+
+        joinTeam.setOnClickListener(v -> {
+            //TODO: JOIN THE TEAM
+            String message = "Good Luck";
+        });
+
+        createTeam.setOnClickListener(v -> {
+            //TODO: CREATE THE TEAM
+            String message = "Good Luck";
+        });
+
         return root;
     }
 }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     "DataBased2");
             Statement statement = server.createStatement();
             //WATCH SPACES
-            ResultSet r = statement.executeQuery("SELECT u.Username, u.Password " +
+            ResultSet r = statement.executeQuery("SELECT u.Username, u.Password, u.TName " +
                     "FROM Users u " + "WHERE u.Username = " +
                     "\""+ userName + "\""+  " AND u.Password = " +  "\""+ password + "\"");
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             while (r.next()) {
                 if (r.getString("Username").equals(userName) && r.getString("Password").equals(password)) {
                     Intent nextScreen = new Intent(this, Lobby.class);
+                    nextScreen.putExtra("Team Name", r.getString("TName"));
                     startActivity(nextScreen);
                     //DO WHATEVER HERE
                 }

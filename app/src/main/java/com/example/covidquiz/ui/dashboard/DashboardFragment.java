@@ -30,6 +30,7 @@ public class DashboardFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        getActivity().setTitle("Teams");
         return root;
     }
 }
