@@ -40,7 +40,7 @@ public class QuestionAccuracy extends AppCompatActivity {
                 TwoEntry val = new TwoEntry(r.getString("Question"), r.getString("Accuracy"));
                 entries.add(val);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
