@@ -34,13 +34,13 @@ public class CurrentRoom extends AppCompatActivity {
                     "DataBased2");
             Statement statement = server.createStatement();
             //WATCH SPACES
-            ResultSet r = statement.executeQuery("SELECT WinsA, WinsB " +
+            ResultSet r = statement.executeQuery("SELECT TeamA, TeamB, WinsA, WinsB " +
                     "FROM Rooms " + "WHERE RoomName = " +
                     "\""+ roomName + "\"");
 
             while(r.next()) {
-                ((TextView) findViewById(R.id.textViewTeamAWins)).setText(r.getString("WinsA"));
-                ((TextView) findViewById(R.id.textViewTeamBWins)).setText(r.getString("WinsB"));
+                ((TextView) findViewById(R.id.textViewTeamAWins)).setText(r.getString("TeamA") + " Wins: \n" + r.getString("WinsA"));
+                ((TextView) findViewById(R.id.textViewTeamBWins)).setText(r.getString("TeamB") + " Wins: \n" + r.getString("WinsB"));
             }
 
         } catch (Exception e) {
