@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.net.Inet4Address;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link navigate_stats#newInstance} factory method to
@@ -63,11 +65,18 @@ public class navigate_stats extends Fragment {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_navigate_stats, container, false);
         Button QA = (Button) root.findViewById(R.id.buttonQAcc);
+        Button topicQA = (Button) root.findViewById(R.id.buttonTopicQA);
 
         QA.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), QuestionAccuracy.class);
             startActivity(i);
         });
+
+        topicQA.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), TopicQA.class);
+            startActivity(i);
+        });
+
         return root;
     }
 }
