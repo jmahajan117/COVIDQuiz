@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.covidquiz.R;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment {
@@ -30,7 +35,25 @@ public class NotificationsFragment extends Fragment {
         ArrayList<String> rooms = new ArrayList<>();
         String teamName = getActivity().getIntent().getStringExtra("Team Name");
         //TODO:List all of the rooms that a team is in
+        try {
+            //COPY BELOW
+            Connection server = DriverManager.getConnection(
+                    "jdbc:mysql://34.122.65.95:3306/411Data",
+                    "root",
+                    "DataBased2");
+            Statement statement = server.createStatement();
+            //WATCH SPACES
+            ResultSet r = statement.executeQuery("SELECT RoomName " +
+                    "FROM Rooms " + "WHERE TeamA = " +
+                    "\""+ teamName + "\"" + " OR TeamB = " + "\""+ teamName + "\"");
 
+            while(r.next()) {
+                rooms.add(r.getString("RoomName"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),
                 android.R.layout.simple_list_item_1, rooms);
