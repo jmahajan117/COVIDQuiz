@@ -2,66 +2,66 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigate_stats">
+    tools:context=".CurrentRoom">
 
-    <Button
-        android:id="@+id/buttonTopicQA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Topic Questions Accuracy"
+    <TextView
+        android:id="@+id/textViewRoomName"
+        android:layout_width="177dp"
+        android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonQAcc"
-        app:layout_constraintVertical_bias="0.146" />
-
-    <Button
-        android:id="@+id/buttonLowAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lowest Accuracy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTeamsWins"
-        app:layout_constraintVertical_bias="0.267" />
-
-    <Button
-        android:id="@+id/buttomTeamTopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team with Topic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLowAcc"
-        app:layout_constraintVertical_bias="0.411" />
-
-    <Button
-        android:id="@+id/buttonTeamsWins"
-        android:layout_width="218dp"
-        android:layout_height="57dp"
-        android:text="Teams Wins"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTopicQA"
-        app:layout_constraintVertical_bias="0.188" />
-
-    <Button
-        android:id="@+id/buttonQAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Questions per Accuracy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.169" />
 
+    <Button
+        android:id="@+id/buttonDeleteRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onDeleteRoom"
+        android:text="Delete Room"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/textViewTeamAWins"
+        android:layout_width="132dp"
+        android:layout_height="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <TextView
+        android:id="@+id/textViewTeamBWins"
+        android:layout_width="136dp"
+        android:layout_height="76dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.463" />
+
+    <Button
+        android:id="@+id/buttonAnswerQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onAnswerQuestion"
+        android:text="Answer Question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

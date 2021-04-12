@@ -1,5 +1,6 @@
 package com.example.covidquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.net.Inet4Address;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +63,40 @@ public class navigate_stats extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigate_stats, container, false);
+        View root =  inflater.inflate(R.layout.fragment_navigate_stats, container, false);
+        Button QA = (Button) root.findViewById(R.id.buttonQAcc);
+        Button topicQA = (Button) root.findViewById(R.id.buttonTopicQA);
+        Button teamWithWins = (Button) root.findViewById(R.id.buttonTeamsWins);
+        Button teamTopic = (Button) root.findViewById(R.id.buttomTeamTopic);
+        Button lowest = (Button) root.findViewById(R.id.buttonLowAcc);
+
+        QA.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), QuestionAccuracy.class);
+            startActivity(i);
+        });
+
+        topicQA.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), TopicQA.class);
+            startActivity(i);
+        });
+
+        teamWithWins.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), TeamWins.class);
+            startActivity(i);
+
+        });
+
+        teamTopic.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), TeamTopic.class);
+            startActivity(i);
+
+        });
+
+        lowest.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), LowestAccuracy.class);
+            startActivity(i);
+        });
+
+        return root;
     }
 }
