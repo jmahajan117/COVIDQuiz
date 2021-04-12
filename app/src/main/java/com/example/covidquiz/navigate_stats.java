@@ -1,5 +1,6 @@
 package com.example.covidquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,13 @@ public class navigate_stats extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigate_stats, container, false);
+        View root =  inflater.inflate(R.layout.fragment_navigate_stats, container, false);
+        Button QA = (Button) root.findViewById(R.id.buttonQAcc);
+
+        QA.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), QuestionAccuracy.class);
+            startActivity(i);
+        });
+        return root;
     }
 }
