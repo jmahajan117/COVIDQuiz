@@ -86,7 +86,8 @@ public class navigate_stats extends Fragment {
         });
 
         teamTopic.setOnClickListener(v -> {
-            
+            Intent i = new Intent(getActivity(), TeamTopic.class);
+            startActivity(i);
 
         });
 
