@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.covidquiz.AddQuestion;
-import com.example.covidquiz.Lobby;
 import com.example.covidquiz.R;
+import com.example.covidquiz.ReadQuestion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -65,6 +61,12 @@ public class DashboardFragment extends Fragment {
             ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_expandable_list_item_1, questions);
             questionList.setAdapter(adapter);
+
+            questionList.setOnItemClickListener((parent, view, position, id) -> {
+                Intent i = new Intent(getActivity(), ReadQuestion.class);
+                i.putExtra("Question", questions.get(position));
+                startActivity(i);
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
