@@ -7,15 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".navigate_stats">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/hello_blank_fragment"
+    <Button
+        android:id="@+id/buttonTopicQA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Topic Questions Accuracy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonQAcc"
+        app:layout_constraintVertical_bias="0.146" />
+
+    <Button
+        android:id="@+id/buttonLowAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lowest Accuracy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTeamsWins"
+        app:layout_constraintVertical_bias="0.267" />
+
+    <Button
+        android:id="@+id/buttomTeamTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team with Topic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLowAcc"
+        app:layout_constraintVertical_bias="0.411" />
+
+    <Button
+        android:id="@+id/buttonTeamsWins"
+        android:layout_width="218dp"
+        android:layout_height="57dp"
+        android:text="Teams Wins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTopicQA"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <Button
+        android:id="@+id/buttonQAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Questions per Accuracy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
