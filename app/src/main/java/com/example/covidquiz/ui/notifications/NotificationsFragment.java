@@ -71,6 +71,7 @@ public class NotificationsFragment extends Fragment {
             String roomName = rooms.get(position);
             Intent i = new Intent(getActivity(), CurrentRoom.class);
             i.putExtra("Room Name", roomName);
+            i.putExtra("Team Name", teamName);
             startActivity(i);
 
         });

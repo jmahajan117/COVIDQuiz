@@ -2,6 +2,7 @@ package com.example.covidquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,12 +17,15 @@ import java.sql.Statement;
 public class CurrentRoom extends AppCompatActivity {
 
     private String roomName;
+    private String teamName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_room);
         roomName = this.getIntent().getStringExtra("Room Name");
+        teamName = this.getIntent().getStringExtra("Team Name");
+
         TextView name = (TextView) findViewById(R.id.textViewRoomName);
         name.setText(roomName);
 
@@ -49,6 +53,10 @@ public class CurrentRoom extends AppCompatActivity {
     }
 
     public void onAnswerQuestion(View view) {
+        Intent i = new Intent(this, AnswerQuestion.class);
+        i.putExtra("Room Name", roomName);
+        i.putExtra("Team Name", teamName);
+        startActivity(i);
 
     }
 
