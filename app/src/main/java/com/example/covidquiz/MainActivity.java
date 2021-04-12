@@ -68,4 +68,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, DeleteUser.class);
         startActivity(i);
     }
+
+    public  void onChangeEmail(View view) {
+        Intent i = new Intent(this, ChangeEmail.class);
+        startActivity(i);
+    }
+
 }
