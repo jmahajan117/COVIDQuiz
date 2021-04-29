@@ -79,7 +79,8 @@ public class AddQuestion extends AppCompatActivity {
 
             // Clear the text field
             ((EditText) findViewById(R.id.editTextQuestion)).setText("");
-
+            setResult(100);
+            finish();
 
         } catch (Exception e) {
             e.printStackTrace();

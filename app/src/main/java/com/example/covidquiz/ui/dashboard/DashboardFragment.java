@@ -2,6 +2,7 @@ package com.example.covidquiz.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,5 +76,12 @@ public class DashboardFragment extends Fragment {
 
 
         return root;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            getActivity().recreate();
+        }
     }
 }
