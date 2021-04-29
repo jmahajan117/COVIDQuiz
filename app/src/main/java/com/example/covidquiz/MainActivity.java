@@ -1,13 +1,16 @@
 package com.example.covidquiz;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,12 +19,16 @@ import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        imageView = ((ImageView) findViewById(R.id.gifImageView));
+        Glide.with(this).load(R.drawable.loadingscreen).into(imageView);
     }
 
     public void onSignIn(View view) {
