@@ -29,7 +29,6 @@ public class LowestAccuracy extends AppCompatActivity {
         setContentView(R.layout.activity_lowest_accuracy);
 
         QAList = (ListView) findViewById(R.id.questionAccList);
-        topicDBName = ((EditText) findViewById(R.id.editTextTopicEnter)).getText().toString();
 
         Button b = (Button) findViewById(R.id.buttonSubmit);
         b.setOnClickListener(v -> {
