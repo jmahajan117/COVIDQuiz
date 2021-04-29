@@ -2,6 +2,7 @@ package com.example.covidquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -99,6 +100,8 @@ public class CreateRoom extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            setResult(100);
+            finish();
         }
     }
 }

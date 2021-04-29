@@ -57,7 +57,7 @@ public class CurrentRoom extends AppCompatActivity {
         i.putExtra("Room Name", roomName);
         i.putExtra("Team Name", teamName);
         startActivity(i);
-
+        recreate();
     }
 
     public void onDeleteRoom(View view) {
