@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +29,7 @@ public class LowestAccuracy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lowest_accuracy);
 
-        QAList = (ListView) findViewById(R.id.questionAccList);
+        QAList = (ListView) findViewById(R.id.questionAccTopic);
 
         Button b = (Button) findViewById(R.id.buttonSubmit);
         b.setOnClickListener(v -> {
@@ -62,7 +63,17 @@ public class LowestAccuracy extends AppCompatActivity {
                 e.printStackTrace();
             }
             Entry2DAdapter adapter = new Entry2DAdapter(getApplicationContext(), R.layout.entry2display, entries);
-            QAList.setAdapter(adapter);
+            if (adapter == null) {
+                Log.wtf("help", "adapter's null");
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    QAList.setAdapter(adapter);
+                }
+            });
+
+
             return null;
         }
     }
