@@ -2,6 +2,7 @@ package com.example.covidquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class AnswerQuestion extends AppCompatActivity {
     private String teamName;
     private String correctAnswer;
     private String questionName;
+    private boolean isTeamA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,11 @@ public class AnswerQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_answer_question);
         roomName = this.getIntent().getStringExtra("Room Name");
         teamName = this.getIntent().getStringExtra("Team Name");
+        isTeamA = this.getIntent().getBooleanExtra("is Team A", false);
         correctAnswer = "";
         questionName = "";
+
+
         //TODO: Get a question, display it and it's choices
         try {
             //COPY BELOW
@@ -98,6 +103,7 @@ public class AnswerQuestion extends AppCompatActivity {
         // Notify whether answer is correct or not
         if(userCorrect) {
             Toast toast = Toast.makeText(getApplicationContext(), "Answer Is Correct", Toast.LENGTH_LONG);
+            setResult(150);
             toast.show();
         } else {
             Toast toast = Toast.makeText(getApplicationContext(), "Answer Is Incorrect", Toast.LENGTH_LONG);
@@ -113,11 +119,14 @@ public class AnswerQuestion extends AppCompatActivity {
                     "DataBased2");
             Statement statement = server.createStatement();
             //WATCH SPACES
-            int r = statement.executeUpdate("UPDATE Rooms " +
-                    "SET WinsA = WinsA + 1 " + "WHERE TeamA = \"" + teamName + "\" AND RoomName = \"" + roomName + "\"");
-
-            int r2 = statement.executeUpdate("UPDATE Rooms " +
-                    "SET WinsB = WinsB + 1 " + "WHERE TeamB = \"" + teamName + "\" AND RoomName = \"" + roomName + "\"");
+            if (isTeamA && userCorrect) {
+                int r = statement.executeUpdate("UPDATE Rooms " +
+                        "SET WinsA = WinsA + 1 " + "WHERE TeamA = \"" + teamName + "\" AND RoomName = \"" + roomName + "\"");
+            }
+            if (userCorrect) {
+                int r2 = statement.executeUpdate("UPDATE Rooms " +
+                        "SET WinsB = WinsB + 1 " + "WHERE TeamB = \"" + teamName + "\" AND RoomName = \"" + roomName + "\"");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,5 +148,7 @@ public class AnswerQuestion extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        finish();
     }
 }

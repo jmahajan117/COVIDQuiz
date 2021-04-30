@@ -3,9 +3,14 @@ package com.example.covidquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.Types;
 
 public class Ranking extends AppCompatActivity {
 
@@ -13,7 +18,28 @@ public class Ranking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
+        String team = this.getIntent().getStringExtra("Team Name");
+
+        try {
+            Connection server = DriverManager.getConnection(
+                    "jdbc:mysql://34.122.65.95:3306/411Data",
+                    "root",
+                    "DataBased2");
+
+
+            CallableStatement statement = server.prepareCall("{call Switchboard(2, ?, ?)}");
+            statement.registerOutParameter(2, Types.INTEGER);
+            statement.setString(1, team);
+
+            statement.execute();
+            int i = statement.getInt(2);
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
-
 }

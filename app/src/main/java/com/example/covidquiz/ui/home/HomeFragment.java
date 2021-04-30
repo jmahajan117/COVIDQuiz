@@ -1,5 +1,6 @@
 package com.example.covidquiz.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.covidquiz.R;
+import com.example.covidquiz.Ranking;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
         joinTeam = (Button) root.findViewById(R.id.buttonJoin);
         createTeam = (Button) root.findViewById(R.id.buttonCreateTeam);
         textWins = (TextView) root.findViewById(R.id.textViewWins);
+        Button rank = (Button) root.findViewById(R.id.rankButton);
 
         String user = getActivity().getIntent().getStringExtra("User");
         String teamName = getActivity().getIntent().getStringExtra("Team Name");
@@ -130,6 +133,13 @@ public class HomeFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();;
             }
+        });
+
+
+        rank.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), Ranking.class);
+            i.putExtra("Team Name", teamName);
+            startActivity(i);
         });
 
         return root;
