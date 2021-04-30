@@ -69,6 +69,7 @@ public class navigate_stats extends Fragment {
         Button teamWithWins = (Button) root.findViewById(R.id.buttonTeamsWins);
         Button teamTopic = (Button) root.findViewById(R.id.buttomTeamTopic);
         Button lowest = (Button) root.findViewById(R.id.buttonSearch);
+        Button admin = (Button) root.findViewById(R.id.buttonAdmin);
 
         QA.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), QuestionAccuracy.class);
@@ -95,6 +96,11 @@ public class navigate_stats extends Fragment {
 
         lowest.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), LowestAccuracy.class);
+            startActivity(i);
+        });
+
+        admin.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), AdminActivity.class);
             startActivity(i);
         });
 
