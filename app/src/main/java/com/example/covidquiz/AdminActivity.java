@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -27,8 +28,9 @@ public class AdminActivity extends AppCompatActivity {
                     "jdbc:mysql://34.122.65.95:3306/411Data",
                     "root",
                     "DataBased2");
-            CallableStatement statement = server.prepareCall("{call Switchboard(1, ?)}");
+            CallableStatement statement = server.prepareCall("{call Switchboard(1, ?, ?)}");
 
+            statement.registerOutParameter(2, Types.INTEGER);
             statement.setString(1, "team1");
             statement.execute();
             Toast.makeText(this, "Anti Cheat Enabled", Toast.LENGTH_LONG).show();
